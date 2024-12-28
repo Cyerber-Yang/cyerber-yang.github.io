@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>梦鲨科技</title>
+  <link href="bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="icon" href="logo.webp">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="swiper-bundle.min.css">
+  <link rel="stylesheet" href="spinner.css">
+  <link href="carousel.css" rel="stylesheet">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bg-black {
+        height: 300px;
+        /* 小屏设备调整背景高度 */
+      }
+    }
+
+    @media (min-width: 769px) {
+      .bg-black {
+        height: 500px;
+        /* 大屏设备调整背景高度 */
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: sticky;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100vh;
+      /* 使容器的高度为视窗高度 */
+      overflow: hidden;
+    }
+
+    .swiper-slide {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide img {
+      max-width: 20%;
+      /* 确保图片不会超出其容器 */
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      transition: transform 1s ease;
+    }
+
+
+    .swiper-slide-active img {
+      transform: scale(2);
+      /* 放大当前slide中的图片 */
+    }
+
+    /* 隐藏不在视图中的slides的放大效果（可选） */
+    .swiper-slide-next img,
+    .swiper-slide-prev img {
+      transform: scale(1);
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: space-between;
+      /* 或者使用其他值来调整图片之间的间距 */
+    }
+
+    .image-row .card-body {
+      flex: 3;
+      /* 让每个card-body占据相等的空间 */
+      margin: 0%;
+      /* 可选：为图片添加一些外边距 */
+    }
+
+    /* 定义渐入效果的动画 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+      /* 渐入动画持续2秒 */
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <div class="spinner" id="spinner"></div>
+  <div class="content" id="content">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand ms-5" href="#">梦鲨科技</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+              <li class="nav-item me-3">
+                <a class="nav-link active" aria-current="page" href="#home">首页</a>
+              </li>
+              <li class="nav-item me-3">
+                <a class="nav-link" href="#products">产品展示</a>
+              </li>
+              <li class="nav-item me-3">
+                <a class="nav-link" href="#vr-stand">VR支架</a>
+              </li>
+              <li class="nav-item me-3">
+                <a class="nav-link" href="#solutions">解决方案</a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="#about">关于我们</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section id="home">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+              aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active"
+              style="width: 100vw; height: 80vh; background-image: url('P1_2580_980_compressed.webp'); background-size: cover; background-position: center;">
+              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <!-- <rect width="100%" height="100%" fill="#777" /> -->
+              </svg>
+              <div class="container">
+                <div class="carousel-caption text-start fade-in">
+                  <h1>梦鲨外挂式面捕模块</h1>
+                  <p>精准捕捉每一刻表情，让虚拟世界中的你，生动如初见</p>
+                  <p><a class="btn btn-lg btn-primary " href="支付\pay.html">立即购买</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item"
+              style="width: 100vw; height: 80vh; background-image: url('P2_2580_980_compressed.webp'); background-size: cover; background-position: center;">
+              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <!-- <rect width="100%" height="100%" fill="#777" /> -->
+              </svg>
+              <div class="container">
+                <div class="carousel-caption fade-in">
+                  <h1>赛博时代</h1>
+                  <!-- <img src="logo.webp" alt="Image 1">  -->
+                  <p>赛博时代，让未来触手可及，重塑生活每一刻</p>
+                  <!-- <p><a class="btn btn-lg btn-primary" href="#">了解更多</a></p> -->
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item"
+              style="width: 100vw; height: 80vh; background-image: url('P3_2580_980_compressed.webp'); background-size: cover; background-position: center;">
+              <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <!-- <rect width="100%" height="100%" fill="#777" /> -->
+              </svg>
+              <div class="container">
+                <div class="carousel-caption text-end fade-in">
+                  <h1>虚拟与现实的交互</h1>
+                  <!-- <img src="logo.webp" alt="Image 1">  -->
+                  <p>虚拟与现实的交互，开启未来生活新境界</p>
+                  <!-- <p><a class="btn btn-lg btn-primary" href="#">了解更多</a></p> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          <section class="bg-black">
+            <div class="container-sm" data-aos="fade-up">
+              <div class="text-light py-5 text-center">
+                <div class="py-lg-5"></div>
+                <h2 class="fade-in">梦鲨FT-01</h2>
+                <p class="fw-light pt-2 fade-in">
+                  “高颜值、低功耗、高性能”，你值得拥有！
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                  <div class="member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-img">
+                      <!-- <img src="logo.webp" class="img-fluid rounded-4" alt=""> -->
+                    </div>
+                    <div class="pt-3 pb-5 text-white">
+
+                    </div>
+                    <a class="text-decoration-none fs-6" href="#">
+
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                  <div class="member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-img">
+                      <!-- <img src="logo.webp" class="img-fluid rounded-4" alt=""> -->
+                    </div>
+                    <div class="pt-3 pb-5 text-white">
+
+                    </div>
+                    <a class="text-decoration-none fs-6" href="#">
+
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                  <div class="member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-img">
+                      <!-- <img src="logo.webp" class="img-fluid rounded-4" alt=""> -->
+                    </div>
+                    <div class="pt-3 pb-5 text-white">
+
+                    </div>
+                    <a class="text-decoration-none fs-6" href="#">
+                      <!-- 了解更多<i class="bi bi-arrow-right"></i> -->
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="py-lg-2"></div>
+            </div>
+          </section>
+
+        </div>
+      </section>
+
+
+
+      <section id="products">
+        <div class="container marketing">
+          <!-- START THE FEATURETTES -->
+
+          <hr class="featurette-divider">
+
+          <div class="row featurette fade-in">
+            <div class="col-md-7 ">
+              <h2 class="featurette-heading fw-normal lh-1">高性能 <span class="text-muted">面部捕捉器</span></h2>
+              <p class="lead ">"掌握精准瞬间，高性能面部捕捉器，让每一个细微表情跃然眼前！"
+              <p style="margin-top: 20px;">产品参数：</p>
+              <ul>
+                <li>
+                  <p>
+                    200万像素
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    图像每秒60帧输出速率
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    超广角视角
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    定制摄像头
+                  </p>
+                </li>
+              </ul>
+              </p>
+            </div>
+            <div class="col-md-5">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>梦鲨面捕产品</title>
+                <image href="面捕产品.webp" width="100%" height="100%" />
+                <!-- <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text> -->
+              </svg>
+            </div>
+          </div>
+
+          <hr class="featurette-divider ">
+          
+          <div class="row featurette fade-in">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">VRChat <span class="text-muted">工程机面捕演示</span></h2>
+                <p class="lead">"解锁你的表情宇宙，让虚拟对话跃动真实色彩，每一次微笑都闪耀无限可能！"</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <div class="featurette-video img-fluid mx-auto" style="width: 500px; height: 500px;">
+                    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113140729644997&bvid=BV1Dt4meVEAn&cid=25868764229&p=1" width="500" height="500" frameborder="no" allowfullscreen="true"></iframe>
+                  </div>
+            </div>
+          </div>
+
+          <hr class="featurette-divider ">
+          
+          <div class="row featurette fade-in">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">VRChat <span class="text-muted">PICO4面捕演示</span></h2>
+                <p class="lead">"解锁你的表情宇宙，让虚拟对话跃动真实色彩，每一次微笑都闪耀无限可能！"</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <div class="featurette-video img-fluid mx-auto" style="width: 500px; height: 500px;">
+                  <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113456510470861&bvid=BV1VpmiYDE7F&cid=26693730615&p=1" width="500" height="500" frameborder="no" allowfullscreen="true"></iframe>
+                  </div>
+            </div>
+          </div>
+
+          <hr class="featurette-divider ">
+          
+          <div class="row featurette fade-in">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading fw-normal lh-1">VRChat <span class="text-muted">QuestPro面捕演示</span></h2>
+                <p class="lead">"解锁你的表情宇宙，让虚拟对话跃动真实色彩，每一次微笑都闪耀无限可能！"</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <div class="featurette-video img-fluid mx-auto" style="width: 500px; height: 500px;">
+                  <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113456527245328&bvid=BV1N6miYuE9W&cid=26693731841&p=1" width="500" height="500" frameborder="no" allowfullscreen="true"></iframe>
+                  </div>
+            </div>
+          </div>
+
+          <!-- <hr class="featurette-divider">
+
+          <div class="row featurette fade-in">
+            <div class="col-md-7 order-md-2">
+              <h2 class="featurette-heading fw-normal lh-1">VRChat <span class="text-muted">面捕演示</span></h2>
+              <p class="lead">"解锁你的表情宇宙，让虚拟对话跃动真实色彩，每一次微笑都闪耀无限可能！"</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+              <video class="featurette-video img-fluid mx-auto" width="500" height="500" controls>
+                <source src="面捕演示.mp4" type="video/mp4">
+                您的浏览器不支持 HTML5 视频。
+              </video>
+            </div>
+          </div> -->
+
+          <hr class="featurette-divider ">
+
+          <div class="row featurette fade-in">
+            <div class="col-md-7">
+              <h2 class="featurette-heading fw-normal lh-1 " style="margin-top: 50px;">使用步骤</h2>
+              <p class="lead" style="margin-top: 20px;">1、将外挂支架固定在头显上</p>
+              <p class="lead" style="margin-top: 20px;">2、将面捕模块插入支架滑轨</p>
+              <p class="lead" style="margin-top: 20px;">3、将面部模块接入电脑</p>
+              <p class="lead" style="margin-top: 20px;">4、打开梦鲨面捕软件</p>
+              <p class="lead" style="margin-top: 20px;">5、打开VRC Facetracking软件</p>
+              <p class="lead" style="margin-top: 20px;">6、VRC启动！</p>
+              <p class="lead" style="margin-top: 20px;">一体机可屏蔽面部捕捉只使用眼动追踪</p>
+            </div>
+            <div class="col-md-5">
+              <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <image href="产品展示.webp" width="100%" height="100%" />
+                <!-- <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa"
+                  dy=".3em">500x500</text> -->
+              </svg>
+            </div>
+          </div>
+
+          <hr class="featurette-divider">
+
+          <!-- /END THE FEATURETTES -->
+
+        </div><!-- /.container -->
+      </section>
+      <section>
+        <div class="bg-black fade-in clients text-light">
+          <div class="py-lg-5 text-center container ">
+            <div class="py-2"></div>
+            <h2 style="margin-top: -20px;">合作伙伴</h2>
+          </div>
+          <!-- 轮播展示 logo -->
+          <div class="swiper-container ">
+            <div class="swiper-wrapper" style="margin-top: 80px;  height: auto;">
+              <div class="swiper-slide ">
+                <img src="株式会社 Gamify.webp" alt="Logo 1">
+              </div>
+              <div class="swiper-slide ">
+                <img src="宇叠logo.webp" alt="Logo 2">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- AboutUs here -->
+      <section id="about">
+        <div class="card rounded-0 border-0">
+          <div class="row g-0">
+            <div class="col-md-6 image-row">
+              <div class="card-body d-flex justify-content-center">
+                <img src="tibi.webp" alt="" class="img-fluid" style="width: 767px; height: auto; ">
+              </div>
+              <div class="card-body d-flex justify-content-center">
+                <img src="旧梦微信.webp" alt="" class="img-fluid" style="width: 767px; height: auto; margin-top: 4px;">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body bg-primary text-light h-100 p-lg-5 d-flex flex-column justify-content-center"
+                style="padding-top: 60px; padding-bottom: 60px;">
+                <h5 class="card-title text-center pb-lg-5">关于我们</h5>
+                <p class="card-text fw-lighter px-lg-4" style="text-indent: 2em;">
+                  梦鲨科技是一家专注于虚拟现实（VR）领域配件研发与生产的前沿企业，致力于推动虚拟现实技术的创新与应用边界。自成立以来，我们秉持着科技引领未来的理念，
+                  不断深耕VR配件市场，旨在为用户打造更加沉浸、舒适且高效的VR体验。</p>
+                <p class="card-text fw-lighter px-lg-4" style="text-indent: 2em;">
+                  我们拥有一支由行业资深专家、创新工程师及设计师组成的精英团队，他们紧密协作，持续探索VR技术的无限可能，确保每一款产品都能精准对接市场需求，引领行业潮流。
+                  梦鲨科技重视与全球VR生态系统伙伴的合作，共同推动VR技术的普及与发展，赋能教育、娱乐、医疗、工业设计等多个领域的数字化转型。
+                </p>
+                <p class="card-text fw-lighter px-lg-4" style="text-indent: 2em;">
+                  展望未来，梦鲨科技将持续加大研发投入，深化技术创新，以更加开放的心态和前瞻性的视野，引领VR配件行业迈向更高水平，为全球用户开启更加精彩纷呈的虚拟现实世界之门。</p>
+                <h2 style="text-align: center; margin-top: 20px;">扫描左侧二维码，咨询客服</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- bottom here -->
+      <section>
+        <div class="card text-bg-dark border-0 rounded-0 fade-in"
+          style="max-width: 100%; margin: 0 auto; overflow: hidden; margin-bottom: -50px;">
+          <img src="底部背景.webp" class="card-img" alt="..." style="width: 100%; height: 500px; object-fit: cover;">
+          <div class="card-img-overlay">
+            <div class="container mt-5">
+              <div class="pt-lg-5"></div>
+              <div class="row g-4 pt-lg-5">
+                <div class="col-md-3 col-sm-12">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body">
+                      <p class="card-text">
+                        连云港市梦鲨科技有限公司
+                      </p>
+                      <small class="fw-lighter">
+                        <p class="mb-2">
+                          <i class="bi bi-geo-alt pe-0"></i>
+                          江苏省连云港市东海县桃林镇
+                        </p>
+                        <p class="mb-2">
+                          <i class="bi bi-telephone pe-0"></i>
+                          咨询电话：13675285678
+                        </p>
+                        <p class="mb-2">
+                          <i class="bi bi-envelope pe-0"></i>
+                          域名：matrixxr.cn
+                        </p>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body w-100">
+                      <p class="card-text">
+                        梦鲨科技产品
+                      </p>
+                      <small class="fw-lighter">
+                        <p class="mb-2">
+                          MENGSHA VR支架
+                        </p>
+                        <p class="mb-2">
+                          MENGSHA 面捕模块
+                        </p>
+                        <p class="mb-2">
+                          MENGSHA 其他配件
+                        </p>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body w-100">
+                      <p class="card-text">
+                        解决方案
+                      </p>
+                      <small class="fw-lighter">
+                        <p class="mb-2">
+                          VR辅助配件
+                        </p>
+                        <p class="mb-2">
+                          虚拟主播脸部捕捉
+                        </p>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+
+                  <div class="row">
+                    <div class="card bg-transparent border-0">
+                      <div class="row g-0">
+                        <div class="col-md-4 card-body pb-0">
+                          <img src="logo.webp" style="height: 82px; width: auto;" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body pb-0">
+                            <small class="fw-lighter">
+                              <p class="mb-2">
+                                微信搜索：
+                              </p>
+                              <p class="mb-0 fw-bold">
+                                MENGSHA
+                              </p>
+                              <p class="mb-2">
+                                关注梦鲨科技公众号
+                              </p>
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="card bg-transparent border-0">
+                      <div class="card-body">
+                        <small class="fw-lighter">
+                          <p class="mb-2">
+                            Copyright © 2024-2025
+                          </p>
+                          <p class="mb-2">
+                            连云港市梦鲨科技有限公司版权所有
+                          </p>
+                          <p class="mb-2">
+                            <a target="_blank" href="https://beian.mps.gov.cn/#/query/webSearch?code=32010202011906"
+                              style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                              <img src="" style="float:left;" />
+                              苏ICP备2024138886号-1
+                            </a>
+                          </p>
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var swiper = new Swiper('.swiper-container', {
+        centeredSlides: true, // 居中显示slides  
+        slidesPerView: 3, // 稍微多显示一些，以确保边缘的slides可见但不完全显示  
+        spaceBetween: 0, // slide之间的间距  
+        speed: 1000,
+        loop: true, // 循环模式  
+        autoplay: {
+          delay: 3000, // 自动切换时间间隔  
+          disableOnInteraction: false, // 用户操作后是否继续自动切换 
+          hide: true, // 隐藏滚动条 
+        },
+      });
+    });
+    window.addEventListener('load', function () {
+      // 获取加载动画和内容元素的引用  
+      var spinner = document.getElementById('spinner');
+      var content = document.getElementById('content');
+
+      // 隐藏加载动画  
+      spinner.style.display = 'none';
+      // 显示内容  
+      content.style.display = 'block';
+    });
+  </script>
+</body>
+
+</html>
