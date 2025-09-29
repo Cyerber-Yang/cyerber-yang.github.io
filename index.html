@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优品商城 - 品质生活从此开始</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#"><i class="fa fa-shopping-bag"></i> 优品商城</a>
+            </div>
+            <nav class="nav-links">
+                <a href="#featured">精选商品</a>
+                <a href="#categories">商品分类</a>
+                <a href="#about">关于我们</a>
+                <a href="#contact">联系我们</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#cart" class="cart-btn"><i class="fa fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+                <a href="#search" class="search-btn"><i class="fa fa-search"></i></a>
+                
+                <!-- 未登录时显示 -->
+                <a href="#login" id="loginBtn" class="user-btn" title="登录/注册">
+                    <i class="fa fa-user"></i>
+                </a>
+                
+                <!-- 登录后显示 (默认隐藏) -->
+                <div id="userMenu" class="user-menu" style="display: none;">
+                    <button id="userMenuBtn" class="user-menu-btn">
+                        <i class="fa fa-user-circle"></i>
+                        <span id="loggedUsername"></span>
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <div class="user-menu-dropdown">
+                        <a href="#" id="myOrdersBtn"><i class="fa fa-file-text-o"></i> 我的订单</a>
+                        <a href="#" id="myAccountBtn"><i class="fa fa-cog"></i> 账户设置</a>
+                        <a href="#" id="logoutBtn"><i class="fa fa-sign-out"></i> 退出登录</a>
+                    </div>
+                </div>
+                
+                <button class="menu-toggle" id="menuToggle"><i class="fa fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#featured">精选商品</a>
+            <a href="#categories">商品分类</a>
+            <a href="#about">关于我们</a>
+            <a href="#contact">联系我们</a>
+            <button class="close-menu" id="closeMenu"><i class="fa fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- 英雄区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>品质生活，从此开始</h1>
+            <p>发现精选好物，享受优质生活</p>
+            <div class="hero-buttons">
+                <a href="#featured" class="btn btn-primary">立即购买</a>
+                <a href="#categories" class="btn btn-secondary">浏览分类</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选商品 -->
+    <section class="featured" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2>精选商品</h2>
+                <p>我们精心挑选的优质商品</p>
+            </div>
+            <div class="products-grid">
+                <!-- 商品1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product1.jpg" alt="智能手表">
+                        <div class="product-badges">
+                            <span class="badge new">新品</span>
+                            <span class="badge discount">-20%</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">智能手表 Pro</h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <span>(120)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price current">¥899</span>
+                            <span class="price original">¥1199</span>
+                        </div>
+                        <button class="add-to-cart" data-id="1" data-name="智能手表 Pro" data-price="899" data-image="images/product1.jpg">加入购物车</button>
+                    </div>
+                </div>
+
+                <!-- 商品2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product2.jpg" alt="无线耳机">
+                        <div class="product-badges">
+                            <span class="badge bestseller">畅销</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">无线蓝牙耳机</h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <span>(98)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price current">¥499</span>
+                        </div>
+                        <button class="add-to-cart" data-id="2" data-name="无线蓝牙耳机" data-price="499" data-image="images/product2.jpg">加入购物车</button>
+                    </div>
+                </div>
+
+                <!-- 商品3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product3.jpg" alt="便携相机">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">便携数码相机</h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <span>(56)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price current">¥2499</span>
+                        </div>
+                        <button class="add-to-cart" data-id="3" data-name="便携数码相机" data-price="2499" data-image="images/product3.jpg">加入购物车</button>
+                    </div>
+                </div>
+
+                <!-- 商品4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/product4.jpg" alt="智能音箱">
+                        <div class="product-badges">
+                            <span class="badge discount">-15%</span>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">智能音箱 Mini</h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                            <span>(78)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="price current">¥349</span>
+                            <span class="price original">¥399</span>
+                        </div>
+                        <button class="add-to-cart" data-id="4" data-name="智能音箱 Mini" data-price="349" data-image="images/product4.jpg">加入购物车</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品分类 -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>商品分类</h2>
+                <p>浏览我们的商品分类</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="images/category1.jpg" alt="电子产品">
+                    <h3>电子产品</h3>
+                    <span>120+ 商品</span>
+                </div>
+                <div class="category-card">
+                    <img src="images/category2.jpg" alt="家居用品">
+                    <h3>家居用品</h3>
+                    <span>85+ 商品</span>
+                </div>
+                <div class="category-card">
+                    <img src="images/category3.jpg" alt="时尚服饰">
+                    <h3>时尚服饰</h3>
+                    <span>150+ 商品</span>
+                </div>
+                <div class="category-card">
+                    <img src="images/category4.jpg" alt="健康美容">
+                    <h3>健康美容</h3>
+                    <span>90+ 商品</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计数据 -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fa fa-users"></i>
+                    <h3>10,000+</h3>
+                    <p>满意客户</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fa fa-shopping-bag"></i>
+                    <h3>5,000+</h3>
+                    <p>优质商品</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fa fa-truck"></i>
+                    <h3>2,000+</h3>
+                    <p>每日配送</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fa fa-star"></i>
+                    <h3>4.9</h3>
+                    <p>客户评分</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>关于我们</h2>
+                    <p>优品商城成立于2015年，是一家专注于提供高品质商品的在线购物平台。我们致力于为客户提供优质的商品和卓越的购物体验。</p>
+                    <p>我们的使命是通过精选的商品和贴心的服务，让每一位客户都能享受到品质生活。我们相信，好的商品应该让更多人受益。</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fa fa-check-circle"></i>
+                            <span>品质保证</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fa fa-truck"></i>
+                            <span>快速配送</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fa fa-headphones"></i>
+                            <span>7x24小时客服</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fa fa-exchange"></i>
+                            <span>30天退换</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/about.jpg" alt="关于我们">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>客户评价</h2>
+                <p>听听我们的客户怎么说</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>"这里的商品质量非常好，价格也很合理。我已经是这里的老客户了，每次购物体验都很愉快。"</p>
+                    <div class="testimonial-author">
+                        <img src="images/user1.jpg" alt="用户头像">
+                        <div class="author-info">
+                            <h4>张先生</h4>
+                            <p>上海</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>"客服态度非常好，有问题都能及时解决。物流也很快，包装很精美，总之很满意这次购物。"</p>
+                    <div class="testimonial-author">
+                        <img src="images/user2.jpg" alt="用户头像">
+                        <div class="author-info">
+                            <h4>李女士</h4>
+                            <p>北京</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>"商品和描述的一样好，使用体验非常棒。会继续关注这家店，也会推荐给我的朋友们。"</p>
+                    <div class="testimonial-author">
+                        <img src="images/user3.jpg" alt="用户头像">
+                        <div class="author-info">
+                            <h4>王先生</h4>
+                            <p>广州</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>联系我们</h2>
+                <p>如有任何问题，请随时联系我们</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fa fa-map-marker"></i>
+                        <div class="contact-text">
+                            <h4>地址</h4>
+                            <p>上海市浦东新区张江高科技园区</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa fa-phone"></i>
+                        <div class="contact-text">
+                            <h4>电话</h4>
+                            <p>400-123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa fa-envelope"></i>
+                        <div class="contact-text">
+                            <h4>邮箱</h4>
+                            <p>service@youpin.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa fa-clock-o"></i>
+                        <div class="contact-text">
+                            <h4>营业时间</h4>
+                            <p>周一至周日 9:00-21:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="您的电话" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="您的留言" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送留言</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 购物车侧边栏 -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>购物车</h3>
+            <button class="close-cart" id="closeCart"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- 购物车商品将通过JS动态添加 -->
+            <div class="empty-cart">
+                <i class="fa fa-shopping-cart"></i>
+                <p>购物车是空的</p>
+                <a href="#featured" class="btn btn-secondary">去购物</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>总计:</span>
+                <span id="cartTotal">¥0</span>
+            </div>
+            <button class="btn btn-primary checkout-btn" id="checkoutBtn" disabled>去结算</button>
+        </div>
+    </div>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>用户登录</h2>
+                <span id="closeLoginModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">用户名</label>
+                        <input type="text" id="username" placeholder="请输入用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" placeholder="请输入密码" required>
+                    </div>
+                    <div class="form-group remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">记住我</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                    <div class="login-register">
+                        <span>还没有账号？</span>
+                        <button type="button" id="showRegisterForm" class="btn btn-link">立即注册</button>
+                    </div>
+                </form>
+                
+                <!-- 注册表单 (默认隐藏) -->
+                <form id="registerForm" class="login-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="regUsername">用户名</label>
+                        <input type="text" id="regUsername" placeholder="请设置用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">密码</label>
+                        <input type="password" id="regPassword" placeholder="请设置密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">确认密码</label>
+                        <input type="password" id="regConfirmPassword" placeholder="请再次输入密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">手机号码</label>
+                        <input type="tel" id="regPhone" placeholder="请输入手机号码" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">注册</button>
+                    <div class="login-register">
+                        <span>已有账号？</span>
+                        <button type="button" id="showLoginForm" class="btn btn-link">返回登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结算模态框 -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>填写订单信息</h2>
+                <span id="closeCheckoutModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm" class="checkout-form">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" placeholder="请输入您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="tel" id="phone" placeholder="请输入您的手机号码" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">收货地址</label>
+                        <textarea id="address" placeholder="请输入您的详细收货地址" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment">支付方式</label>
+                        <select id="payment" required>
+                            <option value="alipay">支付宝</option>
+                            <option value="wechat">微信支付</option>
+                            <option value="creditcard">银行卡</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="remark">备注信息</label>
+                        <textarea id="remark" placeholder="选填：有什么特殊要求请告诉我们"></textarea>
+                    </div>
+                    
+                    <!-- 订单摘要 -->
+                    <div class="order-summary">
+                        <h3>订单摘要</h3>
+                        <div id="orderSummaryItems" class="order-summary-items"></div>
+                        <div class="order-total">
+                            <span>总计：</span>
+                            <span id="orderTotal">¥0</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">提交订单</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单成功模态框 -->
+    <div id="orderSuccessModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>订单提交成功！</h2>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+                <p>您的订单已成功提交，我们将尽快为您发货。</p>
+                <div class="modal-actions">
+                    <button id="backToShop" class="btn btn-secondary">返回商城</button>
+                    <button id="viewOrder" class="btn btn-primary">查看订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单查询模态框 -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>我的订单</h2>
+                <span id="closeOrderModal" class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="orderList" class="order-list">
+                    <div class="empty-orders">
+                        <i class="fa fa-file-text-o"></i>
+                        <p>您还没有任何订单</p>
+                        <a href="#featured" class="btn btn-secondary">去购物</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#"><i class="fa fa-shopping-bag"></i> 优品商城</a>
+                    <p>品质生活，从此开始</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa fa-weixin"></i></a>
+                        <a href="#"><i class="fa fa-weibo"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#featured">精选商品</a></li>
+                        <li><a href="#categories">商品分类</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">购物指南</a></li>
+                        <li><a href="#">支付方式</a></li>
+                        <li><a href="#">配送信息</a></li>
+                        <li><a href="#">退换政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><i class="fa fa-map-marker"></i> 上海市浦东新区张江高科技园区</li>
+                        <li><i class="fa fa-phone"></i> 400-123-4567</li>
+                        <li><i class="fa fa-envelope"></i> service@youpin.com</li>
+                        <li><i class="fa fa-clock-o"></i> 周一至周日 9:00-21:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 优品商城. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop"><i class="fa fa-arrow-up"></i></button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
